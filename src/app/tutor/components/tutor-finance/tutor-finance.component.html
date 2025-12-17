@@ -1,0 +1,21 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <h1>Finanzas</h1>
+  <div class="card total-card">
+    <h2>Total de Ingresos</h2>
+    <p class="total-amount">S/ {{ totalEarnings.toFixed(2) }}</p>
+  </div>
+  
+  <h2>Historial de Pagos</h2>
+  <div *ngFor="let payment of payments" class="card">
+    <div class="payment-info">
+      <h3>S/ {{ payment.amount.toFixed(2) }}</h3>
+      <p>{{ payment.reservation?.announcement?.courseName }}</p>
+      <small>{{ payment.paymentDate | date }}</small>
+    </div>
+  </div>
+</div>
+
+
+
+

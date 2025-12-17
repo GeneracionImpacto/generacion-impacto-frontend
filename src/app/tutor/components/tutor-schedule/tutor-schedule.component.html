@@ -1,0 +1,57 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <h1>Horarios</h1>
+  <div class="schedule-content">
+    <div class="card">
+      <h2>Mi disponibilidad</h2>
+      <p *ngIf="schedule.length === 0" class="note">
+        Aún no has configurado horarios. Por defecto, se asume disponibilidad amplia (08:00–20:00).
+      </p>
+
+      <div *ngIf="schedule.length > 0" class="schedule-list">
+        <div *ngFor="let s of schedule" class="schedule-item">
+          <strong>{{ s.dayOfWeek }}</strong>: {{ s.startTime }} - {{ s.endTime }}
+        </div>
+      </div>
+
+      <form [formGroup]="availabilityForm" (ngSubmit)="addAvailability()" class="availability-form">
+        <div class="form-group">
+          <label>Día</label>
+          <select class="form-control" formControlName="dayOfWeek">
+            <option *ngFor="let d of days" [value]="d.value">{{ d.label }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Hora inicio</label>
+          <input type="time" class="form-control" formControlName="startTime" />
+        </div>
+        <div class="form-group">
+          <label>Hora fin</label>
+          <input type="time" class="form-control" formControlName="endTime" />
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="availabilityForm.invalid || isSaving">
+          {{ isSaving ? 'Guardando...' : 'Agregar disponibilidad' }}
+        </button>
+      </form>
+    </div>
+
+    <div class="reservations-section">
+      <h2>Reservaciones</h2>
+      <div class="card">
+        <app-calendar [events]="calendarEvents"></app-calendar>
+      </div>
+      <div *ngFor="let reservation of reservations" class="card">
+        <h3>{{ reservation.announcement?.courseName }}</h3>
+        <p>Estudiante: {{ reservation.student?.name }}</p>
+        <p>Fecha: {{ reservation.dateTime | date:'short' }}</p>
+        <span [class]="reservation.paid ? 'badge-paid' : 'badge-pending'">
+          {{ reservation.paid ? 'Pagado' : 'Pendiente' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

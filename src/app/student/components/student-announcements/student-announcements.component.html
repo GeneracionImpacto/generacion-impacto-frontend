@@ -1,0 +1,76 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <div class="header">
+    <h1>Anuncios de Tutorías</h1>
+    <button class="btn btn-secondary" (click)="showScholarshipForm = !showScholarshipForm">
+      Solicitar Beca
+    </button>
+  </div>
+
+  <div *ngIf="showScholarshipForm" class="card">
+    <h2>Solicitar Beca</h2>
+    <form [formGroup]="scholarshipForm" (ngSubmit)="requestScholarship()">
+      <div class="form-group">
+        <label>Curso</label>
+        <input type="text" formControlName="courseName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Motivo</label>
+        <textarea formControlName="reason" class="form-control" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Fecha Inicio</label>
+        <input type="date" formControlName="startDate" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Fecha Fin</label>
+        <input type="date" formControlName="endDate" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="scholarshipForm.invalid">Enviar</button>
+    </form>
+  </div>
+
+  <div class="announcements-grid">
+    <div *ngFor="let announcement of announcements" class="card">
+      <h3>{{ announcement.courseName }}</h3>
+      <p><strong>Tutor:</strong> {{ announcement.tutor?.name }}</p>
+      <p><strong>Teléfono:</strong> {{ announcement.tutor?.phoneNumber }}</p>
+      <p>{{ announcement.description }}</p>
+      <button class="btn btn-primary" (click)="selectedAnnouncement = announcement; showBookingForm = true">
+        Reservar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="showBookingForm && selectedAnnouncement" class="modal">
+    <div class="modal-content">
+      <h2>Reservar Tutoría: {{ selectedAnnouncement.courseName }}</h2>
+      <form [formGroup]="bookingForm" (ngSubmit)="bookTutorship()">
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" formControlName="date" class="form-control" required (change)="onDateChange()">
+        </div>
+        <div class="form-group">
+          <label>Hora disponible (1 hora)</label>
+          <select class="form-control" formControlName="slot" required>
+            <option value="" disabled>Selecciona un horario</option>
+            <option *ngFor="let s of availableSlots" [value]="s">
+              {{ s | date:'short' }}
+            </option>
+          </select>
+          <small *ngIf="selectedDate && availableSlots.length === 0" class="form-text">
+            No hay horarios disponibles para esa fecha.
+          </small>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" (click)="showBookingForm = false">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid">Pagar (S/25)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+

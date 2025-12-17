@@ -1,0 +1,49 @@
+.container {
+  padding: 40px 20px;
+  
+  h1 {
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+  }
+
+  .note {
+    color: var(--text-gray);
+    margin-bottom: 15px;
+  }
+
+  .schedule-list {
+    margin-bottom: 20px;
+  }
+
+  .schedule-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .availability-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    align-items: end;
+  }
+  
+  .badge-paid {
+    background-color: var(--success-green);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+  }
+  
+  .badge-pending {
+    background-color: var(--text-gray);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+  }
+}
+
+
+
+

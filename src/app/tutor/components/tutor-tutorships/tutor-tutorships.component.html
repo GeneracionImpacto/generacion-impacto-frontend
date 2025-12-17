@@ -1,0 +1,55 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <div class="tutorships-content">
+    <div class="header">
+      <h1>Mis Tutorías</h1>
+      <button class="btn btn-primary" (click)="showRequestForm = !showRequestForm">
+        {{ showRequestForm ? 'Cancelar' : 'Crear Nueva Solicitud' }}
+      </button>
+    </div>
+
+    <div *ngIf="showRequestForm" class="card request-form-card">
+      <h2>Nueva Solicitud de Tutoría</h2>
+      <form [formGroup]="requestForm" (ngSubmit)="submitRequest()">
+        <div class="form-group">
+          <label>Nombre del Curso</label>
+          <input type="text" formControlName="courseName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Nombre del Profesor</label>
+          <input type="text" formControlName="teacherName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Periodo (ej: 2025-1)</label>
+          <input type="text" formControlName="period" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Descripción / Experiencia</label>
+          <textarea formControlName="description" class="form-control" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>URL del Video (5 min max explicando algo del curso)</label>
+          <input type="url" formControlName="videoUrl" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="requestForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Enviando...' : 'Enviar Solicitud' }}
+        </button>
+      </form>
+    </div>
+
+    <div class="announcements-list">
+      <h2>Anuncios Aprobados</h2>
+      <div *ngIf="announcements.length === 0" class="empty-state">
+        No tienes anuncios aprobados aún
+      </div>
+      <div *ngFor="let announcement of announcements" class="card announcement-card">
+        <h3>{{ announcement.courseName }}</h3>
+        <p>{{ announcement.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

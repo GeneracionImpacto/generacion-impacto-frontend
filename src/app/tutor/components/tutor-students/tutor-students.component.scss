@@ -1,0 +1,18 @@
+.container {
+  padding: 40px 20px;
+  
+  h1 {
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+  }
+  
+  .students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+
+
+

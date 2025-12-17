@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/">TUTutoría</a>
+    </div>
+    <ul class="navbar-nav">
+      <li *ngFor="let route of routes">
+        <a [routerLink]="route.path" routerLinkActive="active">{{ route.label }}</a>
+      </li>
+      <li>
+        <button class="btn-logout" (click)="logout()">Cerrar Sesión</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+

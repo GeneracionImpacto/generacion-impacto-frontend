@@ -1,0 +1,30 @@
+.container {
+  padding: 40px 20px;
+  
+  h1 {
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+  }
+  
+  .total-card {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    text-align: center;
+    padding: 40px;
+    margin-bottom: 30px;
+    
+    h2 {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    
+    .total-amount {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+

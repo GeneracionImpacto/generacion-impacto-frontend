@@ -1,0 +1,43 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <div class="home-content">
+    <h1>Bienvenido, Tutor</h1>
+    <p class="subtitle">Gestiona tus tutorías y ayuda a otros estudiantes</p>
+    
+    <div class="cards-grid">
+      <div class="card">
+        <h2>Tutorías</h2>
+        <p>Gestiona tus anuncios de tutorías y crea nuevas solicitudes</p>
+        <a routerLink="/tutor/tutorships" class="btn btn-primary">Ver Tutorías</a>
+      </div>
+      
+      <div class="card">
+        <h2>Notificaciones</h2>
+        <p>Revisa tus notificaciones y solicitudes pendientes</p>
+        <a routerLink="/tutor/notifications" class="btn btn-primary">Ver Notificaciones</a>
+      </div>
+      
+      <div class="card">
+        <h2>Finanzas</h2>
+        <p>Consulta tus ingresos y pagos recibidos</p>
+        <a routerLink="/tutor/finance" class="btn btn-primary">Ver Finanzas</a>
+      </div>
+      
+      <div class="card">
+        <h2>Estudiantes</h2>
+        <p>Ve la lista de estudiantes que has tutorado</p>
+        <a routerLink="/tutor/students" class="btn btn-primary">Ver Estudiantes</a>
+      </div>
+      
+      <div class="card">
+        <h2>Horarios</h2>
+        <p>Gestiona tu disponibilidad y reservaciones</p>
+        <a routerLink="/tutor/schedule" class="btn btn-primary">Ver Horarios</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

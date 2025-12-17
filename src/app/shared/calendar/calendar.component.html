@@ -1,0 +1,36 @@
+<div class="calendar">
+  <div class="calendar-header">
+    <button class="btn btn-secondary" type="button" (click)="prevMonth()">◀</button>
+    <h3 class="title">{{ monthLabel() }}</h3>
+    <button class="btn btn-secondary" type="button" (click)="nextMonth()">▶</button>
+  </div>
+
+  <div class="dow">
+    <div class="dow-cell">Lun</div>
+    <div class="dow-cell">Mar</div>
+    <div class="dow-cell">Mié</div>
+    <div class="dow-cell">Jue</div>
+    <div class="dow-cell">Vie</div>
+    <div class="dow-cell">Sáb</div>
+    <div class="dow-cell">Dom</div>
+  </div>
+
+  <div class="grid">
+    <div *ngFor="let week of weeks" class="week">
+      <div *ngFor="let day of week" class="day" [class.muted]="!isCurrentMonth(day)">
+        <div class="day-number">{{ day.getDate() }}</div>
+        <div class="events">
+          <div *ngFor="let ev of (eventsByDay.get(dayKey(day)) || []).slice(0, 3)" class="event">
+            <div class="event-title">{{ ev.title }}</div>
+            <div class="event-sub">{{ ev.dateTime | date:'shortTime' }}<span *ngIf="ev.subtitle"> — {{ ev.subtitle }}</span></div>
+          </div>
+          <div *ngIf="(eventsByDay.get(dayKey(day)) || []).length > 3" class="more">
+            +{{ (eventsByDay.get(dayKey(day)) || []).length - 3 }} más
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

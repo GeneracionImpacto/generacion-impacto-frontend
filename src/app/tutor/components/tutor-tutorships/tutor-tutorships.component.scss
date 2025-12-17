@@ -1,0 +1,49 @@
+.tutorships-content {
+  padding: 40px 20px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h1 {
+      color: var(--primary-blue);
+    }
+  }
+
+  .request-form-card {
+    margin-bottom: 30px;
+
+    h2 {
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+    }
+  }
+
+  .announcements-list {
+    h2 {
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-gray);
+      padding: 40px;
+    }
+
+    .announcement-card {
+      margin-bottom: 20px;
+
+      h3 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+
+
+

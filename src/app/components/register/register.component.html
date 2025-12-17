@@ -1,0 +1,80 @@
+<div class="register-container">
+  <div class="register-card">
+    <h1>TUTutoría</h1>
+    <h2>Crear Cuenta</h2>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" required>
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+          Email inválido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" formControlName="password" class="form-control" required>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+          La contraseña debe tener al menos 6 caracteres
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" formControlName="name" class="form-control" required>
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error-message">
+          El nombre es requerido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="phoneNumber">Número de Teléfono</label>
+        <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="form-control" required>
+        <div *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched" class="error-message">
+          El número de teléfono es requerido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="studentCode">Código de Estudiante</label>
+        <input type="text" id="studentCode" formControlName="studentCode" class="form-control" required>
+        <div *ngIf="registerForm.get('studentCode')?.invalid && registerForm.get('studentCode')?.touched" class="error-message">
+          El código de estudiante es requerido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="role">Rol</label>
+        <select id="role" formControlName="role" class="form-control" required>
+          <option [value]="Role.STUDENT">Estudiante</option>
+          <option [value]="Role.TUTOR">Tutor</option>
+          <option [value]="Role.ADMIN">Administrador</option>
+        </select>
+      </div>
+      
+      <div class="form-group" *ngIf="registerForm.get('role')?.value === Role.ADMIN">
+        <label for="adminSecretCode">Código Secreto de Administrador</label>
+        <input type="text" id="adminSecretCode" formControlName="adminSecretCode" class="form-control" required>
+        <small class="form-text">Ingresa el código: GENIMPACTO2025</small>
+        <div *ngIf="registerForm.get('adminSecretCode')?.invalid && registerForm.get('adminSecretCode')?.touched" class="error-message">
+          El código secreto es requerido para administradores
+        </div>
+      </div>
+      
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+      
+      <button type="submit" class="btn btn-primary">
+        Registrarse
+      </button>
+    </form>
+    
+    <p class="login-link">
+      ¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión aquí</a>
+    </p>
+  </div>
+</div>
+
+
+
+

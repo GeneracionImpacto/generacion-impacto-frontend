@@ -1,0 +1,37 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <h1>Solicitudes Pendientes</h1>
+  
+  <div class="section">
+    <h2>Solicitudes de Tutorías</h2>
+    <div *ngFor="let request of tutorshipRequests" class="card">
+      <h3>{{ request.courseName }}</h3>
+      <p><strong>Tutor:</strong> {{ request.tutor?.name }}</p>
+      <p><strong>Profesor:</strong> {{ request.teacherName }}</p>
+      <p><strong>Periodo:</strong> {{ request.period }}</p>
+      <p>{{ request.description }}</p>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="approveRequest(request.id!)">Aprobar</button>
+        <button class="btn btn-secondary" (click)="rejectRequest(request.id!)">Rechazar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Solicitudes de Becas</h2>
+    <div *ngFor="let scholarship of scholarships" class="card">
+      <h3>{{ scholarship.courseName }}</h3>
+      <p><strong>Estudiante:</strong> {{ scholarship.student?.name }}</p>
+      <p><strong>Motivo:</strong> {{ scholarship.reason }}</p>
+      <p><strong>Rango:</strong> {{ scholarship.startDate }} - {{ scholarship.endDate }}</p>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="approveScholarship(scholarship.id!)">Aprobar</button>
+        <button class="btn btn-secondary" (click)="rejectScholarship(scholarship.id!)">Rechazar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

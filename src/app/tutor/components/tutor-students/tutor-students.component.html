@@ -1,0 +1,15 @@
+<app-navbar [role]="role" [routes]="routes"></app-navbar>
+<div class="container">
+  <h1>Mis Estudiantes</h1>
+  <div class="students-grid">
+    <div *ngFor="let student of students" class="card">
+      <h3>{{ student.name }}</h3>
+      <p>Teléfono: {{ student.phoneNumber }}</p>
+      <p>Código: {{ student.studentCode }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
