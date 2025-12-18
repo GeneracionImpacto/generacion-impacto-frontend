@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiUrl = 'http://localhost:8080/api/student';
+  private apiUrl = 'https://spring-api-958972085944.us-central1.run.app/api/student';
 
   constructor(private http: HttpClient) {}
 

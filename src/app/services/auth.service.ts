@@ -7,7 +7,8 @@ import { RegisterRequest, LoginRequest, AuthResponse } from '../models/auth.mode
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/auth';
+  //private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = 'https://spring-api-958972085944.us-central1.run.app/api/auth';
   private tokenKey = 'auth_token';
   private userKey = 'user_data';
 
