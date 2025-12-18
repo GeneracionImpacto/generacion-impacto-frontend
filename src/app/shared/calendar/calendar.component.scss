@@ -3,6 +3,7 @@
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 16px;
+  overflow-x: hidden;
 }
 
 .calendar-header {
@@ -54,6 +55,55 @@
 
   &.muted {
     opacity: 0.55;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar {
+    padding: 12px;
+  }
+
+  /* En móvil: siempre ocupar el ancho disponible (sin overflow) */
+  .dow,
+  .week {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .calendar-header {
+    .title {
+      font-size: 1rem;
+      text-align: center;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn {
+      padding: 10px 14px;
+    }
+  }
+
+  .day {
+    min-height: 64px;
+    padding: 4px;
+  }
+
+  .event-title {
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .event-sub,
+  .more {
+    font-size: 0.75rem;
+  }
+
+  .event-sub {
+    display: none;
   }
 }
 

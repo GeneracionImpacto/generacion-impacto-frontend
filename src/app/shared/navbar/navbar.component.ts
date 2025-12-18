@@ -15,7 +15,17 @@ export class NavbarComponent {
   @Input() role!: Role;
   @Input() routes: any[] = [];
 
+  isMobileMenuOpen = false;
+
   constructor(private authService: AuthService) {}
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
 
   logout(): void {
     this.authService.logout();

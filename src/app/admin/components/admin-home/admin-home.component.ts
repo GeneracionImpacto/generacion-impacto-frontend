@@ -45,7 +45,16 @@ import { Role } from '../../../models/user.model';
     .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
     .stat-card { text-align: center; padding: 30px; }
     .stat-number { font-size: 2.5rem; font-weight: bold; color: var(--primary-blue); }
-    .quick-actions { display: flex; gap: 20px; flex-wrap: wrap; }
+    .quick-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+    @media (max-width: 768px) {
+      .container { padding: 18px 15px; }
+      .quick-actions { gap: 14px; }
+      .quick-actions .btn {
+        width: min(320px, 100%);
+        text-align: center;
+      }
+    }
   `]
 })
 export class AdminHomeComponent implements OnInit {
